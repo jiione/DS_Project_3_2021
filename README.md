@@ -48,7 +48,6 @@ $ ls
 
 $ tar -czvf 2020202001_DS_project2.tar.gz *
 ```
-```
 
 ### how to decompress tar.gz
 ##### tar.gz 파일이 잘 압축되었는지 확인하기 위해 실행한다.
