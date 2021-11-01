@@ -44,7 +44,7 @@ $ ./run
 ```
 $ ls
 ```
-```
+
 
 $ tar -czvf 2020202001_DS_project2.tar.gz *
 ```
