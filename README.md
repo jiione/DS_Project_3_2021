@@ -8,17 +8,11 @@ Notice !! 설계와 실습을 모두 수강하시는 분은 실습 과제제출�
 
 ## <u>**Notice**</u>
 --------------------------
-[2021_DS_Project2_ver5.pdf](https://github.com/myungoh/DS_Project_2_2021_2/files/7448790/2021_DS_Project2_ver5.pdf)
 
 ```
 11/01 - ver1 업로드
 ```
 
-## <u>**Skeleton code 수정**</u>
---------------------------
-```
-
-```
 
 ### requirement
 ##### 먼저 해당 github에 저장되어 있는 base 코드를 다운받는다.
@@ -44,8 +38,7 @@ $ ./run
 ```
 $ ls
 ```
-
-
+```
 $ tar -czvf 2020202001_DS_project2.tar.gz *
 ```
 
@@ -53,8 +46,10 @@ $ tar -czvf 2020202001_DS_project2.tar.gz *
 ##### tar.gz 파일이 잘 압축되었는지 확인하기 위해 실행한다.
 ```
 $ ls
+```
 2020202001_DS_project2.tar.gz
 
+```
 $ tar -xzvf 2020202001_DS_project1.tar.gz
 ```
 
