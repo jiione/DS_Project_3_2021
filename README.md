@@ -43,9 +43,11 @@ $ ./run
 ##### 압축할 파일들은 하나의 디렉토리에 모아두고 tar 명령어를 실행한다.
 ```
 $ ls
-'''
+```
+```
 
 $ tar -czvf 2020202001_DS_project2.tar.gz *
+```
 ```
 
 ### how to decompress tar.gz
