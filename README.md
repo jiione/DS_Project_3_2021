@@ -17,8 +17,8 @@ Notice !! 설계와 실습을 모두 수강하시는 분은 실습 과제제출�
 ### requirement
 ##### 먼저 해당 github에 저장되어 있는 base 코드를 다운받는다.
 ```
-$ git clone https://github.com/myungoh/DS_Project_2_2021_2.git
-$ cd DS_Project_2_2021_2
+$ git clone https://github.com/myungoh/DS_Project_3_2021.git
+$ cd DS_Project_3_2021
 ```
 
 ### how to compile this project
@@ -39,7 +39,7 @@ $ ./run
 $ ls
 ```
 ```
-$ tar -czvf 2020202001_DS_project2.tar.gz *
+$ tar -czvf 2020202001_DS_project3.tar.gz *
 ```
 
 ### how to decompress tar.gz
@@ -47,10 +47,10 @@ $ tar -czvf 2020202001_DS_project2.tar.gz *
 ```
 $ ls
 ```
-2020202001_DS_project2.tar.gz
+2020202001_DS_project3.tar.gz
 
 ```
-$ tar -xzvf 2020202001_DS_project1.tar.gz
+$ tar -xzvf 2020202001_DS_project3.tar.gz
 ```
 
 
