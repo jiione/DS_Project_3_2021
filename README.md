@@ -1,5 +1,5 @@
 # DS_Project_3_2021
-2021-2 Data Structure Project #2
+2021 Data Structure Project #3
 Due date: 2021/12/10 23h 59m 59s.
 
 Notice !! 윈도우에서 리눅스로 단순 파일 복사 및 드래그는 파일 인코딩 변환 문제가 발생 할 수 있으니
