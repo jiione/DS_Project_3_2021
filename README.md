@@ -17,7 +17,7 @@ Notice !! 설계와 실습을 모두 수강하시는 분은 실습 과제제출�
 ### requirement
 ##### 먼저 해당 github에 저장되어 있는 base 코드를 다운받는다.
 ```
-$ git clone https://github.com/myungoh/DS_Project_3_2021.git
+$ git clone https://github.com/ghks4098/DS_Project_3_2021.git
 $ cd DS_Project_3_2021
 ```
 
