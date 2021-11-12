@@ -48,8 +48,8 @@ public:
     /// check whether the graph has negative edge or not.
     bool IsNegativeEdge();
 
-    /// find the path from startVertexKey to endVertexKey with BFS (stack and queue)
-	std::vector<int> FindPathDfs(int startVertexKey, int endVertexKey);
+    /// find the path from startVertexKey to endVertexKey with BFS
+	std::vector<int> FindPathBfs(int startVertexKey, int endVertexKey);
 
     /// find the shortest path from startVertexKey to endVertexKey with Dijkstra using std::set
     std::vector<int> FindShortestPathDijkstraUsingSet(int startVertexKey, int endVertexKey);
