@@ -51,7 +51,7 @@ Result Manager::Print()
     // TODO: implement
 }
 /// <summary>
-/// find the path from startVertexKey to endVertexKey with BFS (stack and queue)
+/// find the path from startVertexKey to endVertexKey with DFS 
 /// </summary>
 ///
 /// <param name="startVertexKey">
@@ -85,25 +85,6 @@ Result Manager::FindPathDfs(int startVertexKey, int endVertexKey)
 /// Result::Success otherwise.
 /// </returns>
 Result Manager::FindShortestPathDijkstraUsingSet(int startVertexKey, int endVertexKey)
-{
-    // TODO: implement
-}
-/// <summary>
-/// find the shortest path from startVertexKey to endVertexKey with Dijkstra using MinHeap
-/// </summary>
-///
-/// <param name="startVertexKey">
-/// the start vertex key
-/// </param>
-/// <param name="endVertexKey">
-/// the end vertex key
-/// </param>
-///
-/// <returns>
-/// Result::InvalidVertexKey or Result::GraphNotExist or Result::InvalidAlgorithm if an exception has occurred.
-/// Result::Success otherwise.
-/// </returns>
-Result Manager::FindShortestPathDijkstraUsingMinHeap(int startVertexKey, int endVertexKey)
 {
     // TODO: implement
 }
