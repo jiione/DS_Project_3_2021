@@ -12,12 +12,12 @@ private:
     // the filepath for the result log
     const char* RESULT_LOG_PATH = "log.txt";
     // the filepath for the error log
-    
+    const char* ERROR_LOG_PATH="log.txt";
 
     // the file stream for the result log
     std::ofstream fout;
     // the file stream for the error log
-    
+    std::ofstream ferr;
     // graph instance to manage the vertics.
     Graph m_graph;
 

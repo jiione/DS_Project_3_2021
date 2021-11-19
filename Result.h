@@ -4,6 +4,7 @@
 enum Result
 {
     Success = 0,
+    InvalidOptionNumber,
 
     CommandFileNotExist = 100,
     LoadFileNotExist,

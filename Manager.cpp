@@ -12,14 +12,23 @@ Manager::~Manager()
 
 void Manager::Run(const char* filepath)
 {
+    std::ifstream fin;
     fout.open(RESULT_LOG_PATH);
-    ferr.open(ERROR_LOG_PATH);
+    // ferr.open(ERROR_LOG_PATH);
+    fin.open(filepath);
+    if(!fin) PrintError(LoadFileNotExist);
+    char cmd [100];
+    while(!fin.eof())
+    {
+        
+    }
 
     // TODO: implement
 }
+
 void Manager::PrintError(Result result)
 {
-    ferr << "Error code: " << result << std::endl;
+    fout << "Error code: " << result << std::endl;
 }
 
 /// <summary>
@@ -65,7 +74,7 @@ Result Manager::Print()
 /// Result::InvalidVertexKey or Result::GraphNotExist or Result::InvalidAlgorithm if an exception has occurred.
 /// Result::Success otherwise.
 /// </returns>
-Result Manager::FindPathDfs(int startVertexKey, int endVertexKey)
+Result Manager::FindPathBfs(int startVertexKey, int endVertexKey)
 {
     // TODO: implement
 }
