@@ -25,6 +25,7 @@ public:
     ~Manager();
     void Run(const char* filepath);
     void PrintError(Result result);
+    void PrintSuccess(char* act);
 
 private:
     Result Load(const char* filepath);

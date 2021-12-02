@@ -16,11 +16,52 @@ void Manager::Run(const char* filepath)
     fout.open(RESULT_LOG_PATH);
     // ferr.open(ERROR_LOG_PATH);
     fin.open(filepath);
-    if(!fin) PrintError(LoadFileNotExist);
-    char cmd [100];
-    while(!fin.eof())
+    if(!fin) //if can't open file
     {
-        
+        PrintError(LoadFileNotExist);//print error code
+        return;//and return
+    }
+    char cmd [100];
+    while(!fin.eof())//read command.txt to line by line
+    {
+        fin.getline(cmd,100);
+        char* tmp = strtok(cmd," ");
+        if(tmp==NULL)
+        {
+            continue;
+        }
+        if(strcmp(tmp,"LOAD")==0)
+        {
+            PrintError(Load("mapdata.txt"));
+        }
+        else if(strcmp(tmp,"LOADREPORT")==0)
+        {
+
+        }
+        else if(strcmp(tmp,"PRINT")==0)
+        {
+
+        }
+        else if(strcmp(tmp,"BFS")==0)
+        {
+
+        }
+        else if(strcmp(tmp,"DIJKSTRA")==0)
+        {
+
+        }
+        else if(strcmp(tmp,"BELLMANFORD")==0)
+        {
+
+        }
+        else if(strcmp(tmp,"FLOYD")==0)
+        {
+
+        }
+        else if(strcmp(tmp,"RABINKAPP")==0)
+        {
+
+        }
     }
 
     // TODO: implement
@@ -29,6 +70,13 @@ void Manager::Run(const char* filepath)
 void Manager::PrintError(Result result)
 {
     fout << "Error code: " << result << std::endl;
+}
+
+void Manager::PrintSuccess(char* act)
+{
+    fout << "========== " << act << " ==========" << endl;
+    fout << Success << endl;
+    fout << "============================" << endl << endl;
 }
 
 /// <summary>
@@ -45,7 +93,31 @@ void Manager::PrintError(Result result)
 /// </returns>
 Result Manager::Load(const char* filepath)
 {
-    // TODO: implement
+    ifstream fdata;
+    fdata.open(filepath);//open map's data
+    if(!fdata) return LoadFileNotExist;//if false to open text of map's data, return LoadFileNotExist
+
+    char d_line[100];
+    int Vnum=0;//declare integer for key of vertex
+    while(!fdata.eof())
+    {
+        Vertex* newVertex= new Vertex(Vnum++); //create new vertex
+        int Enum=0;//declare integer for key of edge
+
+        fdata.getline(d_line,100);
+        char* d_tmp=strtok(d_line,"/");
+        while(d_tmp==NULL)//Loop for link edge and vertex
+        {
+            d_tmp=strtok(NULL," ");
+            if(strcmp(d_tmp,"0")!=0)//if Weight is not zero
+            { 
+                Edge* newEdge = new Edge(Enum,atoi(d_tmp));//if Weight is not zero, declare new Edge
+                newVertex ->AddEdge(Enum,atoi(d_tmp));//link edge and vertex
+            }
+            Enum++;
+        }
+        // link Vertex and another Vertex
+    }
 }
 /// <summary>
 /// print out the graph as matrix form

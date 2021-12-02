@@ -1,0 +1,329 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2014 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Thu Dec  2 10:29:14 2021
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+WSLENV = VSCODE_WSL_EXT_LOCATION/up
+# default
+.SHELLFLAGS := -c
+# environment
+VSCODE_AGENT_FOLDER = /home/user/.vscode-server
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /home/user/DS_Project_3_2021
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"281835307ece6cdbe332f77b009e1fa7.ko","_translationsConfigFile":"/home/user/.vscode-server/data/clp/281835307ece6cdbe332f77b009e1fa7.ko/tcf.json","_cacheRoot":"/home/user/.vscode-server/data/clp/281835307ece6cdbe332f77b009e1fa7.ko","_resolvedLanguagePackCoreLocation":"/home/user/.vscode-server/data/clp/281835307ece6cdbe332f77b009e1fa7.ko/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247","_corruptedFile":"/home/user/.vscode-server/data/clp/281835307ece6cdbe332f77b009e1fa7.ko/corrupted.info","_languagePackSupport":true}
+# environment
+_ = /home/user/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/node
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+XDG_DATA_DIRS = /usr/local/share:/usr/share:/var/lib/snapd/desktop
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# environment
+VSCODE_CWD = /mnt/c/Users/USER/AppData/Local/Programs/Microsoft VS Code
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /home/user/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/d/VMware work/bin/:/mnt/c/ProgramData/Anaconda3:/mnt/c/ProgramData/Anaconda3/Library/mingw-w64/bin:/mnt/c/ProgramData/Anaconda3/Library/usr/bin:/mnt/c/ProgramData/Anaconda3/Library/bin:/mnt/c/ProgramData/Anaconda3/Scripts:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/Intel/iCLS Client/:/mnt/c/Program Files/Intel/iCLS Client/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/Program Files/Intel/WiFi/bin/:/mnt/c/Program Files/Common Files/Intel/WirelessCommon/:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/IPT:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/IPT:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Java/jdk1.8.0_291/bin:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/OpenJDK/openjdk-8u302-b08/bin:/mnt/c/ProgramData/chocolatey/lib/maven/apache-maven-3.8.2/bin:/mnt/c/Users/USER/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files/Intel/WiFi/bin/:/mnt/c/Program Files/Common Files/Intel/WirelessCommon/:/mnt/c/Users/USER/AppData/Local/GitHubDesktop/bin:/mnt/c/intelFPGA/20.1/modelsim_ase/win32aloem:/mnt/c/Program Files/JetBrains/PyCharm Community Edition 2021.1.2/bin:/mnt/c/altera_lite/15.1/modelsim_ase/win32aloem:/mnt/c/altera/15.1/modelsim_ase/win32aloem:/mnt/c/Users/USER/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin
+# environment
+VSCODE_LOG_STACK = false
+# makefile (from 'Makefile', line 4)
+FLAG = -std=c++11 -g
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /home/user/DS_Project_3_2021
+# environment
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-76aaa3fb-93e0-4058-8f66-ec47dd2eebee.sock
+# environment
+WSL_INTEROP = /run/WSL/11_interop
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/server/remoteExtensionHostProcess
+# environment
+HOME = /home/user
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# environment
+LOGNAME = user
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 2
+# makefile (from 'Makefile', line 3)
+CC = g++
+# makefile (from 'Makefile', line 2)
+EXEC = run
+# default
+MAKE_VERSION := 4.1
+# environment
+USER = user
+# makefile
+.DEFAULT_GOAL := all
+# environment
+NAME = DESKTOP-2JIEBRS
+# makefile (from 'Makefile', line 1)
+SURC = *.cpp *.h
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/USER/.vscode/extensions/ms-vscode-remote.remote-wsl-0.58.5
+# default
+MAKE_COMMAND := make
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# environment
+LC_ALL = C
+# environment
+HOSTTYPE = x86_64
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+VSCODE_INJECT_NODE_MODULE_LOOKUP_PATH = /home/user/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/remote/node_modules
+# default
+.RECIPEPREFIX := 
+# environment
+LANG = C
+# environment
+TERM = xterm-256color
+# environment
+VSCODE_EXTHOST_WILL_SEND_SOCKET = true
+# environment
+WSL_DISTRO_NAME = Ubuntu-18.04
+# variable set hash-table stats:
+# Load=71/1024=7%, Rehash=0, Collisions=3/103=3%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2064, inode 44202): 21 files, no impossibilities.
+
+# 21 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+all: Edge.cpp Vertex.cpp Manager.cpp Graph.cpp main.cpp Result.h Queue.h Vertex.h Manager.h Graph.h Edge.h MinHeap.h Stack.h
+#  Command line target.
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := all
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := Edge.cpp Vertex.cpp Manager.cpp Graph.cpp main.cpp Result.h Queue.h Vertex.h Manager.h Graph.h Edge.h MinHeap.h Stack.h
+# automatic
+# | := 
+# automatic
+# < := Edge.cpp
+# automatic
+# ^ := Edge.cpp Vertex.cpp Manager.cpp Graph.cpp main.cpp Result.h Queue.h Vertex.h Manager.h Graph.h Edge.h MinHeap.h Stack.h
+# automatic
+# ? := Edge.cpp Vertex.cpp Manager.cpp Graph.cpp main.cpp Result.h Queue.h Vertex.h Manager.h Graph.h Edge.h MinHeap.h Stack.h
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=5/15=33%
+#  recipe to execute (from 'Makefile', line 6):
+		$(CC) $(FLAG) -o $(EXEC) $^
+
+# Not a target:
+MinHeap.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-11-25 12:18:33.8810247
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+Graph.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-11-25 12:18:33.8810247
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+Result.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-11-25 12:18:33.8810247
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Graph.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-11-25 12:18:33.8810247
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2021-11-25 12:18:33.8810247
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+Vertex.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-11-25 12:18:33.8810247
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+main.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-11-25 12:18:33.8810247
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+Edge.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-11-25 12:18:33.8810247
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+Vertex.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-11-25 12:18:33.8810247
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+Edge.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-11-25 12:18:33.8810247
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.DEFAULT:
+ 
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Queue.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-11-25 12:18:33.8810247
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+Manager.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-12-02 01:15:04.0790114
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+Manager.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2021-12-02 01:58:53.4390114
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+Stack.h:
+#  Implicit rule search has been done.
+#  Last modified 2021-11-25 12:18:33.8810247
+#  File has been updated.
+#  Successfully updated.
+
+# files hash-table stats:
+# Load=17/1024=2%, Rehash=0, Collisions=0/42=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 26 / storage = 233 B / avg = 8 B
+# current buf: size = 8162 B / used = 233 B / count = 26 / avg = 8 B
+
+# strcache performance: lookups = 46 / hit rate = 43%
+# hash-table stats:
+# Load=26/8192=0%, Rehash=0, Collisions=1/46=2%
+# Finished Make data base on Thu Dec  2 10:29:14 2021
+
+ 
