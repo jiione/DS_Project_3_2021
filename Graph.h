@@ -49,7 +49,7 @@ public:
     bool IsNegativeEdge();
 
     /// find the path from startVertexKey to endVertexKey with DFS
-	std::vector<int> FindPathDfs(int startVertexKey, int endVertexKey);
+	std::vector<int> FindPathBfs(int startVertexKey, int endVertexKey);
 
     /// find the shortest path from startVertexKey to endVertexKey with Dijkstra using std::set
     std::vector<int> FindShortestPathDijkstraUsingSet(int startVertexKey, int endVertexKey);

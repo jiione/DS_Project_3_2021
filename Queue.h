@@ -8,9 +8,9 @@
 template<class T> class Queue
 {
 public:
-    int front;
-    int rear;
-    int size; //Free to define (recommand 100 or 200)
+    int front=0;
+    int rear=0;
+    int size=100; //Free to define (recommand 100 or 200)
     T *val;
 
     Queue(){
@@ -23,19 +23,23 @@ public:
     }
 
     void push(T value) {
-        // input data
+        val[rear++]=value;
     }
 
     void pop() {
-        //Change Front
+        if(!empty()) front++;
     }
 
     bool empty() {
-        //Check its empty or not
+        return front==rear;
     }
 
     bool isFull() {
         //Check queue is full or not
+    }
+
+    void clear(){
+        front=rear=0;
     }
 };
 

@@ -25,10 +25,12 @@ public:
     ~Manager();
     void Run(const char* filepath);
     void PrintError(Result result);
+    void PrintError(char*act,Result result);
     void PrintSuccess(char* act);
 
 private:
     Result Load(const char* filepath);
+    Result LoadReport(const char* filepath);
     Result Print();
     Result FindPathBfs(int startVertexKey, int endVertexKey);
     Result FindShortestPathDijkstraUsingSet(int startVertexKey, int endVertexKey);

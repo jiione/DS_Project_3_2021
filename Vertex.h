@@ -6,6 +6,9 @@
 #endif
 
 #include "Edge.h"
+#include <string>
+
+using namespace std;
 
 class Vertex
 {
@@ -18,40 +21,19 @@ private:
     Edge* m_pEHead;
     // the next pointer for the linked list of the vertics
     Vertex* m_pNext;
+    string company;
 
 public:
     Vertex();
     Vertex(int key);
     ~Vertex();
 
-    /// <summary>
-    /// set the next pointer of this vertex
-    /// </summary>
-    void SetNext(Vertex* pNext);
-    /// <summary>
-    /// get the key of this vertex
-    /// </summary>
-    ///
-    /// <returns>
-    /// the key of this vertex
-    /// </returns>
-    int GetKey() const;
-    /// <summary>
-    /// get the next pointer of this vertex
-    /// </summary>
-    ///
-    /// <returns>
-    /// the next pointer of this vertex
-    /// </returns>
-    Vertex* GetNext() const;
 
-    /// <summary>
-    /// get the number of the edges
-    /// </summary>
-    ///
-    /// <returns>
-    /// the number of the edges
-    /// </returns>
+    void SetCompany(string str);
+    void SetNext(Vertex* pNext);
+    int GetKey() const;
+    Vertex* GetNext() const;
+    string GetCompany() const;
     int Size() const;
 
     /// <summary>

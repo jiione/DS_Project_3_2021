@@ -12,13 +12,14 @@ Manager::~Manager()
 
 void Manager::Run(const char* filepath)
 {
+    Result result;
     std::ifstream fin;
     fout.open(RESULT_LOG_PATH);
-    // ferr.open(ERROR_LOG_PATH);
+    //ferr.open(ERROR_LOG_PATH);
     fin.open(filepath);
     if(!fin) //if can't open file
     {
-        PrintError(LoadFileNotExist);//print error code
+        PrintError(CommandFileNotExist);//print error code
         return;//and return
     }
     char cmd [100];
@@ -32,19 +33,38 @@ void Manager::Run(const char* filepath)
         }
         if(strcmp(tmp,"LOAD")==0)
         {
-            PrintError(Load("mapdata.txt"));
+            tmp= strtok(NULL," ");
+            result = Load(tmp);
+            if(result==Success)
+            {
+                PrintSuccess("LOAD");
+                PrintError(result);
+            }
+            else if(result==LoadFileNotExist) PrintError("LoadFileNotExist",result);//Call function of Load and print result
         }
         else if(strcmp(tmp,"LOADREPORT")==0)
         {
-
+            tmp=strtok(NULL," ");
+            result = Load(tmp);
+            if(result==Success)
+            {
+               PrintSuccess("LOAD");//Print Success code
+               PrintError(Success);
+            }
+            PrintError(LoadReport(tmp));//Call function of LoadReport and print result
         }
         else if(strcmp(tmp,"PRINT")==0)
         {
-
+            if(Print()==GraphNotExist) PrintError("GraphNotExist",GraphNotExist);
         }
         else if(strcmp(tmp,"BFS")==0)
         {
-
+            if(strtok(NULL," ")!=NULL)
+            {
+                PrintError("VertexKeyNotExist",VertexKeyNotExist);
+                continue;
+            }
+            if(FindPathBfs(0,m_graph.Size()-1)==InvalidAlgorithm) PrintError(InvalidAlgorithm);
         }
         else if(strcmp(tmp,"DIJKSTRA")==0)
         {
@@ -69,14 +89,23 @@ void Manager::Run(const char* filepath)
 
 void Manager::PrintError(Result result)
 {
+    fout << "============================" << std::endl;
     fout << "Error code: " << result << std::endl;
+    fout << "============================" << std::endl << std::endl;
+}
+
+void Manager::PrintError(char* act,Result result)
+{
+    fout << "========== " << act << " ==========" << std::endl;
+    fout << "Error code: " << result << std::endl;
+    fout << "============================" << std::endl << std::endl;
 }
 
 void Manager::PrintSuccess(char* act)
 {
-    fout << "========== " << act << " ==========" << endl;
-    fout << Success << endl;
-    fout << "============================" << endl << endl;
+    fout << "========== " << act << " ==========" << std::endl;
+    fout << "Success" << std::endl;
+    fout << "============================" << std::endl << std::endl;
 }
 
 /// <summary>
@@ -93,7 +122,7 @@ void Manager::PrintSuccess(char* act)
 /// </returns>
 Result Manager::Load(const char* filepath)
 {
-    ifstream fdata;
+    std::ifstream fdata;
     fdata.open(filepath);//open map's data
     if(!fdata) return LoadFileNotExist;//if false to open text of map's data, return LoadFileNotExist
 
@@ -101,23 +130,30 @@ Result Manager::Load(const char* filepath)
     int Vnum=0;//declare integer for key of vertex
     while(!fdata.eof())
     {
-        Vertex* newVertex= new Vertex(Vnum++); //create new vertex
+        m_graph.AddVertex(Vnum);
+        Vertex* tmpVertex= m_graph.FindVertex(Vnum++); //tmpVertex's key is Vnum
         int Enum=0;//declare integer for key of edge
-
         fdata.getline(d_line,100);
         char* d_tmp=strtok(d_line,"/");
-        while(d_tmp==NULL)//Loop for link edge and vertex
+        tmpVertex->SetCompany(d_tmp);
+        d_tmp=strtok(NULL," ");
+        while(d_tmp!=NULL)//Loop for link edge and vertex
         {
-            d_tmp=strtok(NULL," ");
             if(strcmp(d_tmp,"0")!=0)//if Weight is not zero
             { 
                 Edge* newEdge = new Edge(Enum,atoi(d_tmp));//if Weight is not zero, declare new Edge
-                newVertex ->AddEdge(Enum,atoi(d_tmp));//link edge and vertex
+                tmpVertex ->AddEdge(Enum,atoi(d_tmp));//link edge and vertex
             }
             Enum++;
+            d_tmp=strtok(NULL," ");
         }
-        // link Vertex and another Vertex
     }
+    return Success;//retuen Success
+}
+
+Result Manager::LoadReport(const char* filepath)
+{
+    
 }
 /// <summary>
 /// print out the graph as matrix form
@@ -129,7 +165,9 @@ Result Manager::Load(const char* filepath)
 /// </returns>
 Result Manager::Print()
 {
-    // TODO: implement
+    if(m_graph.Size()==0) return GraphNotExist;//if Graph is not exist, return Error code
+    m_graph.Print(fout);//Call Print function of Graph
+    return Success;
 }
 /// <summary>
 /// find the path from startVertexKey to endVertexKey with DFS 
@@ -148,7 +186,34 @@ Result Manager::Print()
 /// </returns>
 Result Manager::FindPathBfs(int startVertexKey, int endVertexKey)
 {
-    // TODO: implement
+    vector<int> v=m_graph.FindPathBfs(startVertexKey,endVertexKey);
+    int sum=0;
+    auto it=v.begin();
+    fout << "========== BFS ==========" << endl;
+    fout <<"shortest path: "<<*it<<" ";
+    Vertex* currVertex=m_graph.FindVertex(startVertexKey);
+    Edge* currEdge;
+    while(currVertex->GetKey()!=endVertexKey)
+    {
+        it++;
+        fout<<*it<<" ";
+        currEdge=currVertex->GetHeadOfEdge();
+        while(currEdge->GetKey()!=*it) currEdge=currEdge->GetNext();
+        sum+=currEdge->GetWeight();
+        currVertex=m_graph.FindVertex(currEdge->GetKey());
+    }
+
+    fout<<endl;
+    fout<<"path length: "<<sum<<endl;
+    fout<<"Course: ";
+    for(int i=0; i<v.size()-2;i++)
+    {
+        fout<<m_graph.FindVertex(v[i])->GetCompany()<<" ";
+    }
+    fout<<endl;
+    fout << "============================" << std::endl << std::endl;
+    if(v[v.size()-1]==-1) return InvalidAlgorithm;
+    return Success;
 }
 /// <summary>
 /// find the shortest path from startVertexKey to endVertexKey with Dijkstra using std::set

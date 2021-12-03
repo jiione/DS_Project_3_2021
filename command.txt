@@ -1,0 +1,4 @@
+LOAD mapdata.txt
+PRINT
+BFS
+BFS 1 3
