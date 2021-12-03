@@ -59,24 +59,28 @@ void Manager::Run(const char* filepath)
         }
         else if(strcmp(tmp,"BFS")==0)
         {
-            if(strtok(NULL," ")!=NULL)
-            {
-                PrintError("VertexKeyNotExist",VertexKeyNotExist);
-                continue;
-            }
-            if(FindPathBfs(0,m_graph.Size()-1)==InvalidAlgorithm) PrintError(InvalidAlgorithm);
+            result=FindPathBfs(0,m_graph.Size()-1);
+            if(strtok(NULL," ")!=NULL) PrintError("InvalidVertexKey",InvalidVertexKey);
+            else if(result==InvalidAlgorithm) PrintError(InvalidAlgorithm);
+            else if(result==GraphNotExist) PrintError("GraphNotExist",GraphNotExist);
         }
         else if(strcmp(tmp,"DIJKSTRA")==0)
         {
-
+            result = FindShortestPathDijkstraUsingSet(0,m_graph.Size()-1);
+            if(strtok(NULL," ")!=NULL) PrintError("InvalidVertexKey",InvalidVertexKey);
+            else if(result==InvalidAlgorithm) PrintError(InvalidAlgorithm);
+            else if(result==GraphNotExist) PrintError("GraphNotExist",GraphNotExist); 
         }
         else if(strcmp(tmp,"BELLMANFORD")==0)
         {
-
+            result = FindShortestPathBellmanFord(0,m_graph.Size()-1);
+            if(strtok(NULL," ")!=NULL) PrintError("InvalidVertexKey",InvalidVertexKey);
+            else if(result==NegativeCycleDetected) PrintError("NegativeCycleDetected",NegativeCycleDetected);
+            else if(result==GraphNotExist) PrintError("GraphNotExist",GraphNotExist);
         }
         else if(strcmp(tmp,"FLOYD")==0)
         {
-
+            result = FindShortestPathFloyd();
         }
         else if(strcmp(tmp,"RABINKAPP")==0)
         {
@@ -155,37 +159,17 @@ Result Manager::LoadReport(const char* filepath)
 {
     
 }
-/// <summary>
-/// print out the graph as matrix form
-/// </summary>
-///
-/// <returns>
-/// Result::Success if the printing is successful
-/// Result::GraphNotExist if there is no graph
-/// </returns>
+
 Result Manager::Print()
 {
     if(m_graph.Size()==0) return GraphNotExist;//if Graph is not exist, return Error code
     m_graph.Print(fout);//Call Print function of Graph
     return Success;
 }
-/// <summary>
-/// find the path from startVertexKey to endVertexKey with DFS 
-/// </summary>
-///
-/// <param name="startVertexKey">
-/// the start vertex key
-/// </param>
-/// <param name="endVertexKey">
-/// the end vertex key
-/// </param>
-///
-/// <returns>
-/// Result::InvalidVertexKey or Result::GraphNotExist or Result::InvalidAlgorithm if an exception has occurred.
-/// Result::Success otherwise.
-/// </returns>
+
 Result Manager::FindPathBfs(int startVertexKey, int endVertexKey)
 {
+    if(m_graph.Size()==0) return GraphNotExist;
     vector<int> v=m_graph.FindPathBfs(startVertexKey,endVertexKey);
     int sum=0;
     auto it=v.begin();
@@ -206,8 +190,9 @@ Result Manager::FindPathBfs(int startVertexKey, int endVertexKey)
     fout<<endl;
     fout<<"path length: "<<sum<<endl;
     fout<<"Course: ";
-    for(int i=0; i<v.size()-2;i++)
+    for(int i=0; i<v.size();i++)
     {
+        if(v[i]<0) break;
         fout<<m_graph.FindVertex(v[i])->GetCompany()<<" ";
     }
     fout<<endl;
@@ -215,43 +200,91 @@ Result Manager::FindPathBfs(int startVertexKey, int endVertexKey)
     if(v[v.size()-1]==-1) return InvalidAlgorithm;
     return Success;
 }
-/// <summary>
-/// find the shortest path from startVertexKey to endVertexKey with Dijkstra using std::set
-/// </summary>
-///
-/// <param name="startVertexKey">
-/// the start vertex key
-/// </param>
-/// <param name="endVertexKey">
-/// the end vertex key
-/// </param>
-///
-/// <returns>
-/// Result::InvalidVertexKey or Result::GraphNotExist or Result::InvalidAlgorithm if an exception has occurred.
-/// Result::Success otherwise.
-/// </returns>
+
 Result Manager::FindShortestPathDijkstraUsingSet(int startVertexKey, int endVertexKey)
 {
-    // TODO: implement
+    if(m_graph.Size()==0) return GraphNotExist;
+    vector<int> v=m_graph.FindShortestPathDijkstraUsingSet(startVertexKey,endVertexKey);
+    int sum=0;
+    auto it=v.begin();
+    fout << "========== DIJKSTRA ==========" << endl;
+    fout <<"shortest path: "<<*it<<" ";
+    Vertex* currVertex=m_graph.FindVertex(startVertexKey);
+    Edge* currEdge;
+    while(currVertex->GetKey()!=endVertexKey)
+    {
+        it++;
+        fout<<*it<<" ";
+        currEdge=currVertex->GetHeadOfEdge();
+        while(currEdge->GetKey()!=*it) currEdge=currEdge->GetNext();
+        sum+=currEdge->GetWeight();
+        currVertex=m_graph.FindVertex(currEdge->GetKey());
+    }
+
+    fout<<endl;
+    fout<<"path length: "<<sum<<endl;
+    fout<<"Course: ";
+    for(int i=0; i<v.size();i++)
+    {
+        if(v[i]<0) break;
+        fout<<m_graph.FindVertex(v[i])->GetCompany()<<" ";
+    }
+    fout<<endl;
+    fout << "============================" << std::endl << std::endl;
+    if(v[v.size()-1]==-1) return InvalidAlgorithm;
+    return Success;
 }
-/// <summary>
-/// find the shortest path from startVertexKey to endVertexKey with Bellman-Ford
-/// </summary>
-///
-/// <param name="startVertexKey">
-/// the start vertex key
-/// </param>
-/// <param name="endVertexKey">
-/// the end vertex key
-/// </param>
-///
-/// <returns>
-/// Result::InvalidVertexKey or Result::GraphNotExist or Result::NegativeCycleDetected if exception has occurred.
-/// Result::Success otherwise.
-/// </returns>
+
 Result Manager::FindShortestPathBellmanFord(int startVertexKey, int endVertexKey)
 {
-    // TODO: implement
+    if(m_graph.Size()==0) return GraphNotExist;
+    vector<int> v=m_graph.FindShortestPathBellmanFord(startVertexKey,endVertexKey);
+    if(v[0]==-1) return NegativeCycleDetected;
+    int sum=0;
+    auto it=v.begin();
+    fout << "========== BELLMANFORD ==========" << endl;
+    fout <<"shortest path: "<<*it<<" ";
+    Vertex* currVertex=m_graph.FindVertex(startVertexKey);
+    Edge* currEdge;
+    while(currVertex->GetKey()!=endVertexKey)
+    {
+        it++;
+        fout<<*it<<" ";
+        currEdge=currVertex->GetHeadOfEdge();
+        while(currEdge->GetKey()!=*it) currEdge=currEdge->GetNext();
+        sum+=currEdge->GetWeight();
+        currVertex=m_graph.FindVertex(currEdge->GetKey());
+    }
+
+    fout<<endl;
+    fout<<"path length: "<<sum<<endl;
+    fout<<"Course: ";
+    for(int i=0; i<v.size();i++)
+    {
+        if(v[i]<0) break;
+        fout<<m_graph.FindVertex(v[i])->GetCompany()<<" ";
+    }
+    fout<<endl;
+    fout << "============================" << std::endl << std::endl;
+    return Success;
+}
+
+Result Manager::FindShortestPathFloyd()
+{
+    if(m_graph.Size()==0) return GraphNotExist;
+    vector<vector<int>> v = m_graph.FindShortestPathFloyd();
+    fout << "========== FLOYD ==========" << endl;
+    for(int i=0;i<m_graph.Size();i++)
+    {
+        for(int j=0; j<m_graph.Size();j++)
+        {
+            if(v[i][j]==IN_FINITY) fout<<1<<" ";
+            else fout<<v[i][j]<<" ";
+        }
+        fout<<endl;
+    }
+    fout << "============================" << std::endl << std::endl;
+    return Success;
 }
 
 Result Manager::RabinKarpCompare(const char* CompareString,const char* ComparedString)

@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Dec  3 09:17:51 2021
+# Make data base, printed on Fri Dec  3 21:45:07 2021
 
 # Variables
 
@@ -67,9 +67,9 @@ VSCODE_PIPE_LOGGING = true
 # environment
 PWD = /home/user/DS_Project_3_2021
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-d0892127-f442-4eb0-86be-0d3b53d560dc.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-2549afa3-c741-48dd-b276-5fa80a67f1dd.sock
 # environment
-WSL_INTEROP = /run/WSL/11_interop
+WSL_INTEROP = /run/WSL/24034_interop
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/server/remoteExtensionHostProcess
 # environment
@@ -229,7 +229,7 @@ Result.h:
 # Not a target:
 Graph.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-03 02:22:18.6391234
+#  Last modified 2021-12-03 20:19:37.0132089
 #  File has been updated.
 #  Successfully updated.
 
@@ -272,6 +272,7 @@ Vertex.cpp:
 Edge.cpp:
 #  Implicit rule search has been done.
 #  Last modified 2021-12-02 15:29:08.7586996
+ 
 #  File has been updated.
 #  Successfully updated.
 
@@ -283,7 +284,6 @@ Edge.cpp:
 
 # Not a target:
 Queue.h:
- 
 #  Implicit rule search has been done.
 #  Last modified 2021-12-03 02:16:05.1391234
 #  File has been updated.
@@ -292,14 +292,14 @@ Queue.h:
 # Not a target:
 Manager.h:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-02 13:23:40.4786996
+#  Last modified 2021-12-03 10:18:46.017181
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 Manager.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-03 02:56:18.4891234
+#  Last modified 2021-12-03 20:50:55.3032089
 #  File has been updated.
 #  Successfully updated.
 
@@ -324,6 +324,6 @@ Stack.h:
 # strcache performance: lookups = 49 / hit rate = 40%
 # hash-table stats:
 # Load=29/8192=0%, Rehash=0, Collisions=1/49=2%
-# Finished Make data base on Fri Dec  3 09:17:51 2021
+# Finished Make data base on Fri Dec  3 21:45:07 2021
 
  

@@ -124,3 +124,137 @@ std::vector<int> Graph::FindPathBfs(int startVertexKey, int endVertexKey)
     prePath.clear();
     return path;
 }
+
+std::vector<int> Graph::FindShortestPathDijkstraUsingSet(int startVertexKey, int endVertexKey)
+{
+    vector<int> distance(m_vSize,IN_FINITY);
+    vector<int> prePath(m_vSize,-1);
+    vector<int> path;
+    set<int> s;
+    Edge* currEdge;
+    Vertex* currVertex=m_pVHead;
+    while(currVertex)
+    {
+        if(currVertex->GetKey()!=startVertexKey) s.insert(currVertex->GetKey());
+        currVertex=currVertex->GetNext();
+    }
+    currVertex=FindVertex(startVertexKey);
+    distance[startVertexKey]=0;
+    while(!s.empty())
+    {
+        currEdge=currVertex->GetHeadOfEdge();
+        while(currEdge)
+        {
+            if(currEdge->GetWeight()<0)
+            {
+                path.insert(path.begin(),-1);//mark InvalidAlgorithm error
+                currEdge=currEdge->GetNext();
+                continue;
+            }
+            if(distance[currEdge->GetKey()]>(distance[currVertex->GetKey()]+currEdge->GetWeight()))
+            {
+                prePath[currEdge->GetKey()]=currVertex->GetKey();
+                distance[currEdge->GetKey()]=distance[currVertex->GetKey()]+currEdge->GetWeight();
+            }
+            currEdge=currEdge->GetNext();
+        }
+        auto min=s.begin();
+        for(auto it=s.begin();it!=s.end();it++)
+        {
+            if(distance[*it]<distance[*min]) min=it;
+        }        
+        currVertex=FindVertex(*min);
+        s.erase(min);
+    }
+    
+    int k=FindVertex(endVertexKey)->GetKey();//k is previous path's key
+    while(k!=startVertexKey)//Repeat until k is startVertexKey
+    {
+        path.insert(path.begin(),k);//insert path in vector
+        k=prePath[k];
+    }
+    path.insert(path.begin(),startVertexKey);
+    prePath.clear();
+    return path;
+}
+
+std::vector<int> Graph::FindShortestPathBellmanFord(int startVertexKey, int endVertexKey)
+{
+    int n=m_vSize;
+    vector<int> distance(n,IN_FINITY);//distance initialize infinity
+    vector<int> path;
+    vector<int> prePath(n,-1);//array of previous path
+    Vertex* currVertex;
+    Edge* currEdge;
+    int k;
+    distance[startVertexKey]=0;
+    for(int x=0;x<n;x++)
+    {
+        currVertex=FindVertex(startVertexKey);
+        for(int y=0;y<n;y++)
+        {
+            if(distance[y]!=IN_FINITY)
+            {
+                currEdge=currVertex->GetHeadOfEdge();
+                while(currEdge)
+                {
+                    k=currEdge->GetKey();
+                    if(distance[k]>distance[y]+currEdge->GetWeight())
+                    {
+                        if(x==n-1)
+                        {
+                            path[0]=-1;
+                            return path;
+                        }
+                        distance[k]=distance[y]+currEdge->GetWeight();
+                        prePath[k]=y;
+                    }
+                    currEdge=currEdge->GetNext();
+                }
+            }
+            currVertex=currVertex->GetNext();
+        }
+    }
+    k=FindVertex(endVertexKey)->GetKey();//k is previous path's key
+    while(k!=startVertexKey)//Repeat until k is startVertexKey
+    {
+        path.insert(path.begin(),k);//insert path in vector
+        k=prePath[k];
+    }
+    path.insert(path.begin(),startVertexKey);
+    prePath.clear();
+    return path;
+}
+
+std::vector<vector<int>> Graph::FindShortestPathFloyd()
+{
+    vector<vector<int>> matrix(m_vSize,vector<int>(m_vSize,IN_FINITY));
+    Vertex* currVertex = m_pVHead;
+    Edge* currEdge;
+    for(int i=0;i<m_vSize;i++)
+    {
+        currEdge= currVertex->GetHeadOfEdge();
+        for(int j=0;j<m_vSize;j++)
+        {
+            if(currEdge->GetKey()==j)
+            {
+                matrix[i][j]=currEdge->GetWeight();
+                if(currEdge->GetNext()!=nullptr)currEdge=currEdge->GetNext();
+            }
+            if(i==j) matrix[i][j] =0;
+        }
+        currVertex=currVertex->GetNext();
+    }
+
+    for(int x=0;x<m_vSize;x++)
+    {
+        for(int y=0;y<m_vSize;y++)
+        {
+            for(int z=0; z<m_vSize;z++)
+            {
+                if(matrix[y][z] > matrix[y][x]+matrix[x][z]) matrix[y][z]=matrix[y][x]+matrix[x][z];
+            }
+        }
+    }
+    return matrix;
+}
