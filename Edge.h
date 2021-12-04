@@ -21,6 +21,7 @@ public:
 
 	/// copy constructor
     Edge(int key, int weight);
+    ~Edge();
 
     /// set the next pointer of this edge
     void SetNext(Edge* pNext);

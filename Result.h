@@ -5,12 +5,15 @@ enum Result
 {
     Success = 0,
     InvalidOptionNumber,
+    NonExistWord,
+
+    FaildtoUpdatePath=5,
 
     CommandFileNotExist = 100,
     LoadFileNotExist,
 
-    VertexKeyNotExist = 200,
-    InvalidVertexKey,
+    InvalidVertexKey = 200,
+    VertexKeyNotExist,
     GraphNotExist,
     InvalidAlgorithm,
     NegativeCycleDetected,

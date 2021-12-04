@@ -6,6 +6,12 @@ Edge::Edge(int key, int weight)
     m_weight=weight;
     m_pNext=nullptr;
 }
+Edge::~Edge()
+{
+    m_key=0;
+    m_weight=0;
+    m_pNext=nullptr;
+}
 
 void Edge::SetNext(Edge* pNext){this->m_pNext=pNext;}
 

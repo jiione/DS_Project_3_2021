@@ -5,7 +5,16 @@ Vertex::Vertex(int key)
     m_size=0;
     m_pEHead=nullptr;
     Vertex* m_pNext=nullptr;
-    company="";
+    Edge* m_pEHead=nullptr;
+}
+Vertex::~Vertex()
+{
+    m_key=0;
+    m_size=0;
+    m_pEHead=nullptr;
+    Vertex* m_pNext=nullptr;
+    Edge* m_pEHead=nullptr;
+    company.clear();
 }
 void Vertex::SetCompany(string str){this->company=str;}
 void Vertex::SetNext(Vertex* pNext) {this->m_pNext=pNext;}
@@ -32,5 +41,6 @@ void Vertex::AddEdge(int edgeKey, int weight)
     Edge* currEdge = m_pEHead;
     while(currEdge->GetNext()) currEdge=currEdge->GetNext();
     currEdge->SetNext(new Edge(edgeKey,weight));
+    m_size++;
 }
 

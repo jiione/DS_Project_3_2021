@@ -100,17 +100,21 @@ std::vector<int> Graph::FindPathBfs(int startVertexKey, int endVertexKey)
             if(visit[currEdge->GetKey()]==unvisited)//if currEdge is not visited path
             {
                 prePath[currEdge->GetKey()]=currVertex;//mark previous path
+                q.push(FindVertex(currEdge->GetKey()));//push currEdge in queue
+                visit[currEdge->GetKey()]=visited;//mark visited path
                 if(currEdge->GetKey()==endVertexKey) 
                 {
                     q.clear();
                     break;
                 }
-                q.push(FindVertex(currEdge->GetKey()));//push currEdge in queue
-                visit[currEdge->GetKey()]=visited;//mark visited path
             }
             currEdge=currEdge->GetNext();//move to the next path
         }
-
+    }
+    if(visit[endVertexKey]==unvisited)
+    {
+        path.clear();
+        return path;
     }
     Vertex* tmpVertex=prePath[endVertexKey];//tmpVertex is previous path
     int k=FindVertex(endVertexKey)->GetKey();//k is previous path's key
@@ -166,7 +170,11 @@ std::vector<int> Graph::FindShortestPathDijkstraUsingSet(int startVertexKey, int
         currVertex=FindVertex(*min);
         s.erase(min);
     }
-    
+    if(distance[endVertexKey]==IN_FINITY)
+    {
+        path.clear();
+        return path;
+    }
     int k=FindVertex(endVertexKey)->GetKey();//k is previous path's key
     while(k!=startVertexKey)//Repeat until k is startVertexKey
     {
@@ -203,7 +211,7 @@ std::vector<int> Graph::FindShortestPathBellmanFord(int startVertexKey, int endV
                     {
                         if(x==n-1)
                         {
-                            path[0]=-1;
+                            path.push_back(-1);
                             return path;
                         }
                         distance[k]=distance[y]+currEdge->GetWeight();
@@ -214,6 +222,11 @@ std::vector<int> Graph::FindShortestPathBellmanFord(int startVertexKey, int endV
             }
             currVertex=currVertex->GetNext();
         }
+    }
+    if(distance[endVertexKey]==IN_FINITY)
+    {
+        path.clear();
+        return path;
     }
     k=FindVertex(endVertexKey)->GetKey();//k is previous path's key
     while(k!=startVertexKey)//Repeat until k is startVertexKey
@@ -257,4 +270,27 @@ std::vector<vector<int>> Graph::FindShortestPathFloyd()
         }
     }
     return matrix;
+}
+
+void Graph::Clear()
+{
+    Vertex* deleteVertex;
+    Vertex* currVertex=m_pVHead;
+    Edge* currEdge;
+    Edge* deleteEdge;
+    for(int i=0;i<m_vSize;i++)
+    {
+        currEdge=currVertex->GetHeadOfEdge();
+        for(int j=0;j<currVertex->Size();j++)
+        {
+            deleteEdge=currEdge;
+            currEdge=currEdge->GetNext();
+            delete deleteEdge;
+            deleteEdge=nullptr;
+        }
+        deleteVertex=currVertex;
+        currVertex=currVertex->GetNext();
+        delete deleteVertex;
+        deleteVertex=nullptr;
+    }
 }

@@ -24,7 +24,7 @@ private:
     string company;
 
 public:
-    Vertex();
+    Vertex(){};
     Vertex(int key);
     ~Vertex();
 

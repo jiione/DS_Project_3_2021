@@ -21,6 +21,8 @@ private:
     // graph instance to manage the vertics.
     Graph m_graph;
 
+    vector<string> report;
+
 public:
     ~Manager();
     void Run(const char* filepath);
