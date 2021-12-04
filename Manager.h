@@ -34,12 +34,12 @@ private:
     Result Load(const char* filepath);
     Result LoadReport(const char* filepath);
     Result Print();
-    Result FindPathBfs(int startVertexKey, int endVertexKey);
-    Result FindShortestPathDijkstraUsingSet(int startVertexKey, int endVertexKey);
+    Result FindPathBfs(int startVertexKey, int endVertexKey);//find shortest path using bfs algorithm except negetive edge
+    Result FindShortestPathDijkstraUsingSet(int startVertexKey, int endVertexKey);//find shortest path using dijkstra algorithm except negative edge
     Result FindShortestPathDijkstraUsingMinHeap(int startVertexKey, int endVertexKey);
-    Result FindShortestPathBellmanFord(int startVertexKey, int endVertexKey);
-    Result FindShortestPathFloyd();
-    Result RabinKarpCompare(const char* CompareString, const char* ComparedString);
+    Result FindShortestPathBellmanFord(int startVertexKey, int endVertexKey);//find shortest path  using bellmanford alforithm including negative edge
+    Result FindShortestPathFloyd();//fuction of find all vertex's shortest path using floyd algorithm
+    Result RabinKarpCompare(const char* CompareString, const char* ComparedString);//compare two string using rabinkarp algorithm
 };
 
 #endif

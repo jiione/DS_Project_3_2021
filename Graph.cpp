@@ -21,17 +21,16 @@ int Graph::Size() const{return m_vSize;}
 
 void Graph::AddVertex(int vertexKey)
 {
-    Vertex* newVertex = new Vertex(vertexKey);//create new Vertex
     if(m_pVHead == nullptr)//is Empty Graph
     {
-        m_pVHead=newVertex;//Graph's head is newVertex
+        m_pVHead=new Vertex(vertexKey);//Graph's head is newVertex
         m_vSize++;//increase Graph's size
         return;
     }
 
     Vertex* currVertex = m_pVHead;//Vertex node to move in Graph
     while(currVertex->GetNext()) currVertex=currVertex->GetNext();//move in Graph
-    currVertex->SetNext(newVertex);//insert vertex in Graph
+    currVertex->SetNext(new Vertex(vertexKey));//insert vertex in Graph
     m_vSize++;//increase Graph's size
 }
 
@@ -93,7 +92,6 @@ std::vector<int> Graph::FindPathBfs(int startVertexKey, int endVertexKey)
         {
             if(currEdge->GetWeight()<0)
             {
-                path.insert(path.begin(),-1);//mark InvalidAlgorithm error
                 currEdge=currEdge->GetNext();
                 continue;
             }
@@ -131,49 +129,48 @@ std::vector<int> Graph::FindPathBfs(int startVertexKey, int endVertexKey)
 
 std::vector<int> Graph::FindShortestPathDijkstraUsingSet(int startVertexKey, int endVertexKey)
 {
-    vector<int> distance(m_vSize,IN_FINITY);
-    vector<int> prePath(m_vSize,-1);
-    vector<int> path;
-    set<int> s;
+    vector<int> distance(m_vSize,IN_FINITY);//array to check distance
+    vector<int> prePath(m_vSize,-1);//array for previous path
+    vector<int> path;//array for shortest path
+    set<int> s;//Set for nodes that haven't visited
     Edge* currEdge;
     Vertex* currVertex=m_pVHead;
-    while(currVertex)
+    while(currVertex)//Repeat to put all vertex in the set
     {
-        if(currVertex->GetKey()!=startVertexKey) s.insert(currVertex->GetKey());
+        if(currVertex->GetKey()!=startVertexKey) s.insert(currVertex->GetKey());//except starting vertex
         currVertex=currVertex->GetNext();
     }
-    currVertex=FindVertex(startVertexKey);
-    distance[startVertexKey]=0;
-    while(!s.empty())
+    currVertex=FindVertex(startVertexKey);//current vertex is starting vertex
+    distance[startVertexKey]=0;//starting vertex's distance is zero
+    while(!s.empty())//Repeat until set is empty
     {
-        currEdge=currVertex->GetHeadOfEdge();
-        while(currEdge)
+        currEdge=currVertex->GetHeadOfEdge();//current edge is current vertex's first path
+        while(currEdge)//Repeat until it finds all path
         {
-            if(currEdge->GetWeight()<0)
+            if(currEdge->GetWeight()<0)//if edge's weight is negative,it ignore this path
             {
-                path.insert(path.begin(),-1);//mark InvalidAlgorithm error
                 currEdge=currEdge->GetNext();
                 continue;
             }
-            if(distance[currEdge->GetKey()]>(distance[currVertex->GetKey()]+currEdge->GetWeight()))
+            if(distance[currEdge->GetKey()]>(distance[currVertex->GetKey()]+currEdge->GetWeight()))//If you find the best route, update the route
             {
-                prePath[currEdge->GetKey()]=currVertex->GetKey();
-                distance[currEdge->GetKey()]=distance[currVertex->GetKey()]+currEdge->GetWeight();
+                prePath[currEdge->GetKey()]=currVertex->GetKey();//update previous path
+                distance[currEdge->GetKey()]=distance[currVertex->GetKey()]+currEdge->GetWeight();//update distance
             }
             currEdge=currEdge->GetNext();
         }
         auto min=s.begin();
-        for(auto it=s.begin();it!=s.end();it++)
+        for(auto it=s.begin();it!=s.end();it++)//find shortest edge and move the vertex
         {
             if(distance[*it]<distance[*min]) min=it;
         }        
         currVertex=FindVertex(*min);
-        s.erase(min);
+        s.erase(min);//it erase visited vertex in the set
     }
-    if(distance[endVertexKey]==IN_FINITY)
+    if(distance[endVertexKey]==IN_FINITY)//If there's no path
     {
         path.clear();
-        return path;
+        return path;//it return empty vector
     }
     int k=FindVertex(endVertexKey)->GetKey();//k is previous path's key
     while(k!=startVertexKey)//Repeat until k is startVertexKey
@@ -181,9 +178,9 @@ std::vector<int> Graph::FindShortestPathDijkstraUsingSet(int startVertexKey, int
         path.insert(path.begin(),k);//insert path in vector
         k=prePath[k];
     }
-    path.insert(path.begin(),startVertexKey);
+    path.insert(path.begin(),startVertexKey);//inset starting vertex in the path
     prePath.clear();
-    return path;
+    return path;//it return path
 }
 
 std::vector<int> Graph::FindShortestPathBellmanFord(int startVertexKey, int endVertexKey)
@@ -195,27 +192,27 @@ std::vector<int> Graph::FindShortestPathBellmanFord(int startVertexKey, int endV
     Vertex* currVertex;
     Edge* currEdge;
     int k;
-    distance[startVertexKey]=0;
-    for(int x=0;x<n;x++)
+    distance[startVertexKey]=0;//initialize starting vertex
+    for(int x=0;x<n;x++)//Repeat the number of Vertex
     {
         currVertex=FindVertex(startVertexKey);
         for(int y=0;y<n;y++)
         {
-            if(distance[y]!=IN_FINITY)
+            if(distance[y]!=IN_FINITY)//if vertex of y has already been updated,
             {
                 currEdge=currVertex->GetHeadOfEdge();
-                while(currEdge)
+                while(currEdge)//Explore all the paths of vertex
                 {
                     k=currEdge->GetKey();
-                    if(distance[k]>distance[y]+currEdge->GetWeight())
+                    if(distance[k]>distance[y]+currEdge->GetWeight())//If it find the best route, update that route
                     {
-                        if(x==n-1)
+                        if(x==n-1)//If the route is updated on N th repeat, 
                         {
-                            path.push_back(-1);
-                            return path;
+                            path.push_back(-1);//mark for error beacause there's a negative cycle
+                            return path;//and end funtion
                         }
-                        distance[k]=distance[y]+currEdge->GetWeight();
-                        prePath[k]=y;
+                        distance[k]=distance[y]+currEdge->GetWeight();//update path's distance
+                        prePath[k]=y;//update previous path
                     }
                     currEdge=currEdge->GetNext();
                 }
@@ -223,7 +220,7 @@ std::vector<int> Graph::FindShortestPathBellmanFord(int startVertexKey, int endV
             currVertex=currVertex->GetNext();
         }
     }
-    if(distance[endVertexKey]==IN_FINITY)
+    if(distance[endVertexKey]==IN_FINITY)//If there's no path
     {
         path.clear();
         return path;
@@ -234,17 +231,17 @@ std::vector<int> Graph::FindShortestPathBellmanFord(int startVertexKey, int endV
         path.insert(path.begin(),k);//insert path in vector
         k=prePath[k];
     }
-    path.insert(path.begin(),startVertexKey);
+    path.insert(path.begin(),startVertexKey);//insert starting  Vertex
     prePath.clear();
-    return path;
+    return path;//return path
 }
 
 std::vector<vector<int>> Graph::FindShortestPathFloyd()
 {
-    vector<vector<int>> matrix(m_vSize,vector<int>(m_vSize,IN_FINITY));
+    vector<vector<int>> matrix(m_vSize,vector<int>(m_vSize,IN_FINITY));//matrix for shortest distance
     Vertex* currVertex = m_pVHead;
     Edge* currEdge;
-    for(int i=0;i<m_vSize;i++)
+    for(int i=0;i<m_vSize;i++)//To Repeat initializing matrix
     {
         currEdge= currVertex->GetHeadOfEdge();
         for(int j=0;j<m_vSize;j++)
@@ -259,18 +256,35 @@ std::vector<vector<int>> Graph::FindShortestPathFloyd()
         currVertex=currVertex->GetNext();
     }
 
-    for(int x=0;x<m_vSize;x++)
+    for(int x=0;x<m_vSize;x++)//x is vertex of passing 
     {
-        for(int y=0;y<m_vSize;y++)
+        for(int y=0;y<m_vSize;y++)//y for origin vertex
         {
-            for(int z=0; z<m_vSize;z++)
+            for(int z=0; z<m_vSize;z++)//x for destination vertex 
             {
-                if(matrix[y][z] > matrix[y][x]+matrix[x][z]) matrix[y][z]=matrix[y][x]+matrix[x][z];
+                if(matrix[y][z] > matrix[y][x]+matrix[x][z]) matrix[y][z]=matrix[y][x]+matrix[x][z];//update better path
             }
         }
     }
-    return matrix;
+    return matrix;//it return matrix
 }
+
+ bool Graph::IsNegativeEdge()//function to check that negative edge exist
+ {
+    Vertex* currVertex = m_pVHead;
+    Edge* currEdge;
+    while(currVertex)//tour in graph
+    {
+        currEdge=currVertex->GetHeadOfEdge();
+        while(currEdge)
+        {
+            if(currEdge->GetWeight()<0) return true;//if negative edge exist, it return true
+            currEdge=currEdge->GetNext();
+        }
+        currVertex=currVertex->GetNext();
+    }
+    return false;//If negative edge does not exist, it return false
+ }
 
 void Graph::Clear()
 {
@@ -278,10 +292,10 @@ void Graph::Clear()
     Vertex* currVertex=m_pVHead;
     Edge* currEdge;
     Edge* deleteEdge;
-    for(int i=0;i<m_vSize;i++)
+    for(int i=0;i<m_vSize;i++)//tour in graph
     {
         currEdge=currVertex->GetHeadOfEdge();
-        for(int j=0;j<currVertex->Size();j++)
+        while(currEdge)//Repeat until it delete Edge of the vertex
         {
             deleteEdge=currEdge;
             currEdge=currEdge->GetNext();
@@ -290,7 +304,7 @@ void Graph::Clear()
         }
         deleteVertex=currVertex;
         currVertex=currVertex->GetNext();
-        delete deleteVertex;
+        delete deleteVertex;//Delete all edges of the vertex and then delete vertex
         deleteVertex=nullptr;
     }
 }

@@ -9,6 +9,7 @@ Vertex::Vertex(int key)
 }
 Vertex::~Vertex()
 {
+    
     m_key=0;
     m_size=0;
     m_pEHead=nullptr;
@@ -29,18 +30,18 @@ Edge* Vertex::GetHeadOfEdge() const {return m_pEHead;}
 
 string Vertex::GetCompany() const {return company;}
 
-void Vertex::AddEdge(int edgeKey, int weight)
+void Vertex::AddEdge(int edgeKey, int weight)//funtion to add edge in the vertex using linked list
 {
     if(m_pEHead==nullptr)
     {
         m_pEHead=new Edge(edgeKey,weight);
-        m_size++;
+        m_size++;//increase size
         return;
     }
 
     Edge* currEdge = m_pEHead;
     while(currEdge->GetNext()) currEdge=currEdge->GetNext();
     currEdge->SetNext(new Edge(edgeKey,weight));
-    m_size++;
+    m_size++;//increase size
 }
 
