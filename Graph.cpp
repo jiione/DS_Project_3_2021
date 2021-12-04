@@ -150,7 +150,7 @@ std::vector<int> Graph::FindShortestPathDijkstraUsingSet(int startVertexKey, int
             if(currEdge->GetWeight()<0)//if edge's weight is negative,it ignore this path
             {
                 currEdge=currEdge->GetNext();
-                continue;
+               continue;
             }
             if(distance[currEdge->GetKey()]>(distance[currVertex->GetKey()]+currEdge->GetWeight()))//If you find the best route, update the route
             {

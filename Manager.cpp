@@ -162,6 +162,7 @@ Result Manager::Load(const char* filepath)
     if(!fdata) return LoadFileNotExist;//if false to open text of map's data, return LoadFileNotExist
 
     char d_line[100];
+    char* d_tmp;
     int Vnum=0;//declare integer for key of vertex
     while(!fdata.eof())
     {
@@ -171,7 +172,7 @@ Result Manager::Load(const char* filepath)
         Vertex* tmpVertex= m_graph.FindVertex(Vnum++); //tmpVertex's key is Vnum
         int Enum=0;//declare integer for key of edge
         if(d_line==NULL) continue;
-        char* d_tmp=strtok(d_line,"/");
+        d_tmp=strtok(d_line,"/");
         tmpVertex->SetCompany(d_tmp);
         d_tmp=strtok(NULL," ");
         while(d_tmp!=NULL)//Loop for link edge and vertex
@@ -349,19 +350,22 @@ Result Manager::RabinKarpCompare(const char* CompareString,const char* ComparedS
     string key= ComparedString;
     int lSum=0;//Sum of comparing string's hash
     int kSum=0;//Sum of compared string's hash
+    int mul=1;
     for(int i=0; i<key.length();i++)
     {
         if('A'<=key[i]&&key[i]<='Z') key[i]+=32;//Convert upper case letters to lower case letters
-        kSum+=key[i]*key[i];
+        kSum+=key[i]*mul;
+        mul*=2;
     }
-
     for(int i=0; i<=line.length()-key.length();i++)//Repeat to find same string using rabinkarp algorithm
     {
         lSum=0;
+        mul=1;
         for(int j=0;j<key.length();j++)
         {
             if('A'<=line[i+j]&&line[i+j]<='Z') line[i+j]+=32;//Convert upper case letters to lower case letters
-            lSum+=line[i+j]*line[i+j];
+            lSum+=line[i+j]*mul;
+            mul*=2;
         }
         if(lSum==kSum)//If the two strings are the same,
         {
