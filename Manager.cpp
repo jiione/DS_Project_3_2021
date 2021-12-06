@@ -167,7 +167,7 @@ Result Manager::Load(const char* filepath)
     while(!fdata.eof())
     {
         fdata.getline(d_line,100);
-        if(d_line==NULL) continue;
+        if(d_line[0]==NULL) continue;
         m_graph.AddVertex(Vnum);
         Vertex* tmpVertex= m_graph.FindVertex(Vnum++); //tmpVertex's key is Vnum
         int Enum=0;//declare integer for key of edge
@@ -350,22 +350,28 @@ Result Manager::RabinKarpCompare(const char* CompareString,const char* ComparedS
     string key= ComparedString;
     int lSum=0;//Sum of comparing string's hash
     int kSum=0;//Sum of compared string's hash
-    int mul=1;
+    int MUL=1;
+    int mul;
+    for(int i=0;i<key.length();i++) 
+    {
+        MUL *=2;
+    }
+    mul=MUL;
     for(int i=0; i<key.length();i++)
     {
         if('A'<=key[i]&&key[i]<='Z') key[i]+=32;//Convert upper case letters to lower case letters
+        mul/=2;
         kSum+=key[i]*mul;
-        mul*=2;
     }
     for(int i=0; i<=line.length()-key.length();i++)//Repeat to find same string using rabinkarp algorithm
     {
         lSum=0;
-        mul=1;
+        mul=MUL;
         for(int j=0;j<key.length();j++)
         {
             if('A'<=line[i+j]&&line[i+j]<='Z') line[i+j]+=32;//Convert upper case letters to lower case letters
+            mul/=2;
             lSum+=line[i+j]*mul;
-            mul*=2;
         }
         if(lSum==kSum)//If the two strings are the same,
         {

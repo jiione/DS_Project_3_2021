@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Dec  4 11:05:20 2021
+# Make data base, printed on Sun Dec  5 15:37:51 2021
 
 # Variables
 
@@ -67,7 +67,7 @@ VSCODE_PIPE_LOGGING = true
 # environment
 PWD = /home/user/DS_Project_3_2021
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-abb2f3d9-204b-4b48-91f3-5130ae924920.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-1c6f0303-1956-46ed-83bc-46fa0aeaf40f.sock
 # environment
 WSL_INTEROP = /run/WSL/11_interop
 # environment
@@ -209,7 +209,7 @@ MinHeap.h:
 # Not a target:
 Graph.h:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-02 23:09:26.2548181
+#  Last modified 2021-12-04 15:33:03.4702687
 #  File has been updated.
 #  Successfully updated.
 
@@ -229,7 +229,7 @@ Result.h:
 # Not a target:
 Graph.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-04 05:11:16.01246
+#  Last modified 2021-12-05 15:31:25.9795684
 #  File has been updated.
 #  Successfully updated.
 
@@ -243,7 +243,7 @@ Makefile:
 # Not a target:
 Vertex.h:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-04 04:54:39.7104271
+#  Last modified 2021-12-05 15:28:53.8795684
 #  File has been updated.
 #  Successfully updated.
 
@@ -257,29 +257,29 @@ main.cpp:
 # Not a target:
 Edge.h:
 #  Implicit rule search has been done.
-#  Last modified 2021-11-25 12:18:33.8810247
+#  Last modified 2021-12-04 15:32:14.8402687
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 Vertex.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-04 05:10:02.9904271
+#  Last modified 2021-12-05 15:28:56.9395684
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 Edge.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-02 15:29:08.7586996
+#  Last modified 2021-12-04 15:32:11.9302687
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
+ 
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
 
 # Not a target:
@@ -292,14 +292,14 @@ Queue.h:
 # Not a target:
 Manager.h:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-04 01:00:42.4125785
+#  Last modified 2021-12-04 20:07:18.2116842
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 Manager.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-04 04:57:53.7504271
+#  Last modified 2021-12-05 00:37:23.139912
 #  File has been updated.
 #  Successfully updated.
 
@@ -324,6 +324,6 @@ Stack.h:
 # strcache performance: lookups = 50 / hit rate = 40%
 # hash-table stats:
 # Load=30/8192=0%, Rehash=0, Collisions=1/50=2%
-# Finished Make data base on Sat Dec  4 11:05:20 2021
+# Finished Make data base on Sun Dec  5 15:37:51 2021
 
  

@@ -2,30 +2,6 @@
 NonDefinedCommand
 ==========================
 
-======= LoadFileNotExist =======
-Error code: 101
-============================
-
-======= GraphNotExist =======
-Error code: 202
-============================
-
-======= GraphNotExist =======
-Error code: 202
-============================
-
-======= GraphNotExist =======
-Error code: 202
-============================
-
-======= GraphNotExist =======
-Error code: 202
-============================
-
-======= GraphNotExist =======
-Error code: 202
-============================
-
 ======== LOAD ========
 Success
 ============================
@@ -34,52 +10,24 @@ Success
 Error code: 0
 ============================
 
-========== PRINT ==========
-0 7 5 8 0 0 0 
-9 0 8 0 0 0 0 
-6 7 0 2 5 0 0 
-5 0 0 0 6 6 0 
-0 0 9 0 0 8 0 
-0 0 0 6 2 0 0 
-0 0 0 0 5 6 0 
+===== InvalidAlgorithm =====
+shortest path: 0 2 6 
+path length: 18
+Course: Our Company  Sonnet’s Ai Company   Target Company  
 ============================
 
-======= VertexKeyNotExist =======
-Error code: 201
 ============================
-
-======= VertexKeyNotExist =======
-Error code: 201
-============================
-
-======= VertexKeyNotExist =======
-Error code: 201
+Error code: 203
 ============================
 
 ========== FLOYD ==========
-0 7 5 7 10 13 INF 
-9 0 8 10 13 16 INF 
-6 7 0 2 5 8 INF 
-5 12 10 0 6 6 INF 
-15 16 9 11 0 8 INF 
-11 18 11 6 2 0 INF 
+0 7 2 0 -7 -6 -12 
+-2 0 -5 -7 -14 -13 -19 
+5 7 0 0 -7 -6 -12 
+5 12 7 0 -2 -1 -7 
+14 16 9 9 0 3 -3 
+11 18 11 6 2 0 -1 
 17 21 14 12 5 6 0 
-============================
-
-======= InvalidVertexKey =======
-Error code: 200
-============================
-
-======= InvalidVertexKey =======
-Error code: 200
-============================
-
-======= InvalidVertexKey =======
-Error code: 200
-============================
-
-======= FaildtoUpdatePath =======
-Error code: 5
 ============================
 
 ======== LOADREPORT ========
@@ -92,11 +40,8 @@ Error code: 0
 
 ========== RABINKARP ==========
 Big Data wlasdld dsfsd
-Seoul Metropolitan Government's Big Data Promotion Project Big data
+The cause of defects in apartment houses
 Plans to promote the pet plant big data
-============================
-
-======= InvalidOptionNumber =======
-Error code: 1
+Public work projects in response to the COVID-19 incident
 ============================
 

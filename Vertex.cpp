@@ -1,4 +1,13 @@
 #include "Vertex.h"
+Vertex::Vertex()
+{
+   m_key=0;
+    m_size=0;
+    m_pEHead=nullptr;
+    Vertex* m_pNext=nullptr;
+    Edge* m_pEHead=nullptr;
+    company=""; 
+}
 Vertex::Vertex(int key)
 {
     m_key=key;
@@ -6,6 +15,7 @@ Vertex::Vertex(int key)
     m_pEHead=nullptr;
     Vertex* m_pNext=nullptr;
     Edge* m_pEHead=nullptr;
+    company="";
 }
 Vertex::~Vertex()
 {

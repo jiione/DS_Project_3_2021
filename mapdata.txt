@@ -1,7 +1,7 @@
 Our Company / 0 7 5 8 0 0 0
-Denny’s Stationery store / 9 0 8 0 0 0 0
-Sonnet’s Ai Company / 6 7 0 2 5 0 0
+Denny’s Stationery store / 9 0 8 0 0 0 -19
+Sonnet’s Ai Company / 6 7 0 2 5 0 13
  Tom’s Accountant office / 5 0 0 0 6 6 0
  Harry’s Computer Repair / 0 0 9 0 0 8 0
- Lin’s Medical Company / 0 0 0 6 2 0 0
+ Lin’s Medical Company / 0 0 0 6 2 0 7
  Target Company / 0 0 0 0 5 6 0

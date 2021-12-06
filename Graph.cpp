@@ -29,7 +29,8 @@ void Graph::AddVertex(int vertexKey)
     }
 
     Vertex* currVertex = m_pVHead;//Vertex node to move in Graph
-    while(currVertex->GetNext()) currVertex=currVertex->GetNext();//move in Graph
+    while(currVertex->GetNext())
+        currVertex=currVertex->GetNext();//move in Graph
     currVertex->SetNext(new Vertex(vertexKey));//insert vertex in Graph
     m_vSize++;//increase Graph's size
 }
@@ -129,6 +130,7 @@ std::vector<int> Graph::FindPathBfs(int startVertexKey, int endVertexKey)
 
 std::vector<int> Graph::FindShortestPathDijkstraUsingSet(int startVertexKey, int endVertexKey)
 {
+    
     vector<int> distance(m_vSize,IN_FINITY);//array to check distance
     vector<int> prePath(m_vSize,-1);//array for previous path
     vector<int> path;//array for shortest path
