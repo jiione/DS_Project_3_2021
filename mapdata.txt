@@ -1,6 +1,0 @@
-Our Company / 0 6 2 0 0 0
-Denny's Stationery store / 0 0 2 2 0 0
-Sonnet's Ai Company / 0 0 0 0 1 0
-Tom's Accountant office / 0 0 0 0 0 2
-Harry's Computer Repair / 0 -2 0 3 0 4
-Target Company / 0 0 0 0 0 0

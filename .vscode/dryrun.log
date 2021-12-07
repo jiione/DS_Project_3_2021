@@ -1,5 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/user/DS_Project_3_2021'
-g++ -std=c++11 -g -o run Edge.cpp Vertex.cpp Manager.cpp Graph.cpp main.cpp Result.h Queue.h Vertex.h Manager.h Graph.h Edge.h MinHeap.h Stack.h
-make: Leaving directory '/home/user/DS_Project_3_2021'
- 
