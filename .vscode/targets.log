@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Dec  5 15:37:51 2021
+# Make data base, printed on Mon Dec  6 19:16:41 2021
 
 # Variables
 
@@ -67,7 +67,7 @@ VSCODE_PIPE_LOGGING = true
 # environment
 PWD = /home/user/DS_Project_3_2021
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-1c6f0303-1956-46ed-83bc-46fa0aeaf40f.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-12a264d5-8fad-429c-ade4-1a85015ca7a0.sock
 # environment
 WSL_INTEROP = /run/WSL/11_interop
 # environment
@@ -229,7 +229,7 @@ Result.h:
 # Not a target:
 Graph.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-05 15:31:25.9795684
+#  Last modified 2021-12-06 00:48:16.9557014
 #  File has been updated.
 #  Successfully updated.
 
@@ -250,7 +250,7 @@ Vertex.h:
 # Not a target:
 main.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-04 04:24:17.5304271
+#  Last modified 2021-12-06 03:16:20.6773884
 #  File has been updated.
 #  Successfully updated.
 
@@ -272,11 +272,11 @@ Vertex.cpp:
 Edge.cpp:
 #  Implicit rule search has been done.
 #  Last modified 2021-12-04 15:32:11.9302687
+ 
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
- 
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -299,7 +299,7 @@ Manager.h:
 # Not a target:
 Manager.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2021-12-05 00:37:23.139912
+#  Last modified 2021-12-06 13:21:16.5971581
 #  File has been updated.
 #  Successfully updated.
 
@@ -324,6 +324,6 @@ Stack.h:
 # strcache performance: lookups = 50 / hit rate = 40%
 # hash-table stats:
 # Load=30/8192=0%, Rehash=0, Collisions=1/50=2%
-# Finished Make data base on Sun Dec  5 15:37:51 2021
+# Finished Make data base on Mon Dec  6 19:16:41 2021
 
  

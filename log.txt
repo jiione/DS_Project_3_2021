@@ -1,7 +1,3 @@
-=======LOA=======
-NonDefinedCommand
-==========================
-
 ======== LOAD ========
 Success
 ============================
@@ -10,38 +6,21 @@ Success
 Error code: 0
 ============================
 
-===== InvalidAlgorithm =====
-shortest path: 0 2 6 
-path length: 18
-Course: Our Company  Sonnet’s Ai Company   Target Company  
-============================
-
-============================
-Error code: 203
+========== PRINT ==========
+0 6 2 0 0 0 
+0 0 2 2 0 0 
+0 0 0 0 1 0 
+0 0 0 0 0 2 
+0 -2 0 3 0 4 
+0 0 0 0 0 0 
 ============================
 
 ========== FLOYD ==========
-0 7 2 0 -7 -6 -12 
--2 0 -5 -7 -14 -13 -19 
-5 7 0 0 -7 -6 -12 
-5 12 7 0 -2 -1 -7 
-14 16 9 9 0 3 -3 
-11 18 11 6 2 0 -1 
-17 21 14 12 5 6 0 
-============================
-
-======== LOADREPORT ========
-Success
-============================
-
-============================
-Error code: 0
-============================
-
-========== RABINKARP ==========
-Big Data wlasdld dsfsd
-The cause of defects in apartment houses
-Plans to promote the pet plant big data
-Public work projects in response to the COVID-19 incident
+0 1 2 3 3 5 
+INF 0 2 2 3 4 
+INF -1 0 1 1 3 
+INF INF INF 0 INF 2 
+INF -2 0 0 0 2 
+INF INF INF INF INF 0 
 ============================
 

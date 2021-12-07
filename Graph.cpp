@@ -248,10 +248,13 @@ std::vector<vector<int>> Graph::FindShortestPathFloyd()
         currEdge= currVertex->GetHeadOfEdge();
         for(int j=0;j<m_vSize;j++)
         {
-            if(currEdge->GetKey()==j)
+            if(currEdge)
             {
-                matrix[i][j]=currEdge->GetWeight();
-                if(currEdge->GetNext()!=nullptr)currEdge=currEdge->GetNext();
+                if(currEdge->GetKey()==j)
+                {
+                    matrix[i][j]=currEdge->GetWeight();
+                    if(currEdge->GetNext()!=nullptr)currEdge=currEdge->GetNext();
+                }
             }
             if(i==j) matrix[i][j] =0;
         }
@@ -260,10 +263,11 @@ std::vector<vector<int>> Graph::FindShortestPathFloyd()
 
     for(int x=0;x<m_vSize;x++)//x is vertex of passing 
     {
-        for(int y=0;y<m_vSize;y++)//y for origin vertex
+        for(int y=0;y<m_vSize;y++)//y for source vertex
         {
             for(int z=0; z<m_vSize;z++)//x for destination vertex 
             {
+                if(matrix[y][x]==IN_FINITY || matrix[x][z]==IN_FINITY) continue;
                 if(matrix[y][z] > matrix[y][x]+matrix[x][z]) matrix[y][z]=matrix[y][x]+matrix[x][z];//update better path
             }
         }

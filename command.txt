@@ -1,10 +1,7 @@
-LOA
+//LOAD data.txt
 LOAD mapdata.txt
-BFS
+PRINT
 FLOYD
-LOADREPORT reportdata.txt
-RABINKARP as
-
 
 
 
